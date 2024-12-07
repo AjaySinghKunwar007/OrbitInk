@@ -16,7 +16,7 @@ OrbitInk is a dynamic and innovative blogging platform designed for storytellers
 - **Frontend**: React.js, Tailwind CSS, React Router
 - **Backend**: Appwrite (for data management and authentication)
 - **State Management**: React Redux
-- **Hosting**: [Vercel/Netlify] (You can host your project on either platform for easy deployment)
+- **Hosting**: [[OrbitInk](https://orbit-ink-ajays-projects-37278e66.vercel.app/)] 
 - **Authentication**: Appwrite for managing user login, registration, and session handling.
 
 ## 🔑 Usage
