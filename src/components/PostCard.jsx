@@ -72,10 +72,8 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
         </div>
         <div className="relative mt-4 flex items-center gap-x-4">
           <img
-            src={
-              userProfile.profileImage
-                ? usersStorageService.getFilePreview(userProfile.profileImage)
-                : "/default-profile.png"
+            src={usersStorageService.getFilePreview(userProfile.profileImage)
+               
             }
             alt={userProfile.userName || "User"}
             className="h-10 w-10 rounded-full object-cover bg-gray-50"
