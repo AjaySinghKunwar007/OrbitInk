@@ -75,7 +75,7 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
             src={
               userProfile.profileImage
                 ? usersStorageService.getFilePreview(userProfile.profileImage)
-                : "/default-profile.jpg"
+                : "/default-profile.png"
             }
             alt={userProfile.userName || "User"}
             className="h-10 w-10 rounded-full object-cover bg-gray-50"
