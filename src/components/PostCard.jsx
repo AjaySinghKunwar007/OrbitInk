@@ -22,7 +22,8 @@ useEffect(()=>{
     try {
       const userProfile= await usersDatabaseService.getUser(userId);
       if(userProfile){
-        setProfileImage(usersStorageService.getFilePreview(userProfile.profileImage))
+        const img=usersStorageService.getFilePreview(userProfile.profileImage)
+        setProfileImage(img)
         setUserProfile(userProfile);
 
       }
