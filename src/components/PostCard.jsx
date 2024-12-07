@@ -13,7 +13,10 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
   const [loading, setLoading] = useState(true);
 
   const image = storageService.getFilePreview(featuredImage);
+  if(userProfile){
 
+    console.log("Profile image URL:", usersStorageService.getFilePreview(userProfile.profileImage));
+  }
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -45,7 +48,7 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
       <article className="flex max-w-sm m-2 flex-col items-start justify-between bg-gray-800 rounded-lg shadow-2xl p-4">
         <div className="relative w-full">
           <img
-            src={featuredImage ? image: "/fallback-image.jpg"}
+            src={featuredImage ? image : "/fallback-image.jpg"}
             alt={title}
             className="w-full h-48 object-cover rounded-t-lg"
           />
@@ -57,7 +60,9 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
         </div>
         <div className="flex items-center gap-x-4 text-xs mt-2">
           <time dateTime={$updatedAt} className="text-gray-500">
-            {$updatedAt ? new Date($updatedAt).toLocaleDateString() : "Unknown Date"}
+            {$updatedAt
+              ? new Date($updatedAt).toLocaleDateString()
+              : "Unknown Date"}
           </time>
           <Link
             to={`/post/${$id}`}
@@ -68,13 +73,13 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
         </div>
         <div className="group relative mt-3">
           <div className="text-lg font-semibold text-white">{title}</div>
-          <div className="mt-2 line-clamp-3 text-sm text-gray-400">{parse(content)}</div>
+          <div className="mt-2 line-clamp-3 text-sm text-gray-400">
+            {parse(content)}
+          </div>
         </div>
         <div className="relative mt-4 flex items-center gap-x-4">
           <img
-            src={usersStorageService.getFilePreview(userProfile.profileImage)
-               
-            }
+            src={userProfile ? usersStorageService.getFilePreview(userProfile.profileImage):"/default-profile.png"}
             alt={userProfile.userName || "User"}
             className="h-10 w-10 rounded-full object-cover bg-gray-50"
           />
