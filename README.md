@@ -4,7 +4,11 @@ OrbitInk is a dynamic and innovative blogging platform designed for storytellers
 
 ## 📸 Screenshots
 
-![Homepage](assets/images/homepage-screenshot.png)
+![Homepage](public/homepage-screenshot.png)
+![Post](public/other-screenshot1.png)
+![SignUp](public/other-screenshot2.png)
+![Add Post](public/other-screenshot3.png)
+![User Profile](public/other-screenshot4.png)
 
 
 ## 🚀 Features
@@ -42,6 +46,7 @@ We welcome contributions to make OrbitInk even better! Here’s how you can cont
 
 ## 🙏 Acknowledgments
 
+- **[Chai aur Code](https://www.youtube.com/c/ChaiAurCode)**: For providing valuable guidance and tutorials that helped me throughout my development journey.
 - **Appwrite**: For providing a powerful backend platform to manage our data and authentication.
 - **React**: For making frontend development fast and efficient.
 - **Tailwind CSS**: For simplifying the design process with utility-first CSS.
