@@ -7,13 +7,18 @@ import usersStorageService from "../appwrite/usersStorage";
 import usersDatabaseService from "../appwrite/usersDatabase";
 
 function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
-  // TODO: fetch the post's creator name;
+
+
   const [userProfile, setUserProfile] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-
-  const image = storageService.getFilePreview(featuredImage);
-  if(userProfile){
+  let image;
+  let profileimage;
+  if(userProfile.profileImage){
+    console.log(userProfile);
+    
+     image = storageService.getFilePreview(featuredImage)
+     profileimage = usersStorageService.getFilePreview(userProfile.profileImage)
 
     console.log("Profile image URL:", usersStorageService.getFilePreview(userProfile.profileImage));
   }
@@ -21,7 +26,7 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
     const fetchUserProfile = async () => {
       try {
         setLoading(true); // Start loading before the fetch
-        const userProfile = await usersDatabaseService.getUser(userId);
+        const userProfile = userId && await usersDatabaseService.getUser(userId);
         if (userProfile) {
           setUserProfile(userProfile);
         }
@@ -48,7 +53,7 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
       <article className="flex max-w-sm m-2 flex-col items-start justify-between bg-gray-800 rounded-lg shadow-2xl p-4">
         <div className="relative w-full">
           <img
-            src={featuredImage ? image : "/fallback-image.jpg"}
+            src={image.length>0 ? image : "/fallback-image.jpg"}
             alt={title}
             className="w-full h-48 object-cover rounded-t-lg"
           />
@@ -79,7 +84,7 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
         </div>
         <div className="relative mt-4 flex items-center gap-x-4">
           <img
-            src={userProfile ? usersStorageService.getFilePreview(userProfile.profileImage):"/default-profile.png"}
+            src={profileimage.length>0 ? profileimage:"/default-profile.png"}
             alt={userProfile.userName || "User"}
             className="h-10 w-10 rounded-full object-cover bg-gray-50"
           />

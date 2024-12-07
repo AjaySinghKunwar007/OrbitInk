@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import databaseService from "../appwrite/database";
-import AllPosts from "./MyPosts";
 import { Container, PostCard } from "../components/index";
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  
+  posts.length>0 && console.log(posts)
   useEffect(() => {
     const fetchAllPosts = async () => {
       try {
@@ -68,17 +67,19 @@ function Home() {
   //     </div>
   //   );
   // }
-
-  return <div className="flex flex-wrap justify-center">
-  {posts.map((post) => (
+  if(posts.length>0)  {
+     return <div className="flex flex-wrap justify-center">
     
-    <PostCard
-      {...post}
-      key={post.$id}
-      className="p-2 w-full md:w-1/4"
-    />
-  ))}
-</div>
+    {posts.map((post) => (
+      
+      <PostCard
+        {...post}
+        key={post.$id}
+        className="p-2 w-full md:w-1/4"
+      />
+    ))}
+  </div>}
+ 
 
 }
 
