@@ -1,0 +1,26 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
+.spinner-border {
+  border-top-color: #3498db;
+  border-right-color: transparent;
+  border-bottom-color: #3498db;
+  border-left-color: transparent;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
