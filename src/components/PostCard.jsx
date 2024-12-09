@@ -19,6 +19,8 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
     
      image = storageService.getFilePreview(featuredImage)
      profileimage = usersStorageService.getFilePreview(userProfile.profileImage)
+     console.log(profileimage);
+     
 
     console.log("Profile image URL:", usersStorageService.getFilePreview(userProfile.profileImage));
   }
