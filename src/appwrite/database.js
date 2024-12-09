@@ -77,7 +77,8 @@ export class DatabaseService {
         return await this.database.listDocuments(
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
-            [Query.equal("status", "active")]
+            [Query.equal("status", "active") ,Query.orderDesc("$createdAt"),]
+            
         )
     } catch (error) {
         console.log("getPosts :: error :: ",error);
