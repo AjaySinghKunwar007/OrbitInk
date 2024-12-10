@@ -15,14 +15,14 @@ function PostCard({ $id, title, featuredImage, $updatedAt, content, userId }) {
   let image;
   let profileimage;
   if(userProfile.profileImage){
-    console.log(userProfile);
+    
     
      image = storageService.getFilePreview(featuredImage)
      profileimage = usersStorageService.getFilePreview(userProfile.profileImage)
-     console.log(profileimage);
+     
      
 
-    console.log("Profile image URL:", usersStorageService.getFilePreview(userProfile.profileImage));
+   
   }
   useEffect(() => {
     const fetchUserProfile = async () => {
