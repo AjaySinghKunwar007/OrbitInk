@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '../components'
 
-function Loader() {
+function Loader({text="Loading post..."}) {
   return (
     <div className=" h-screen w-full">
             <Container>
@@ -11,7 +11,7 @@ function Loader() {
                   role="status"
                   aria-live="polite"
                 ></div>
-                <p className="mt-2 text-lg text-gray-600">Loading post...</p>
+                <p className="mt-2 text-lg text-gray-600">{text}</p>
               </div>
             </Container>
           </div>

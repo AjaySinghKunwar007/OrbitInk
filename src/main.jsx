@@ -1,21 +1,21 @@
 import "./index.css";
-import { StrictMode } from 'react'
+import { lazy, StrictMode,Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import store from "./store/store.js"
 import App from "./App.jsx";
-import Home from './pages/Home.jsx'
-import { AuthLayout } from './components/index.js'
-import Login from "./pages/Login.jsx"
-import Signup from "./pages/Signup.jsx"
-import MyPosts from './pages/MyPosts.jsx'
-import AddPost from "./pages/AddPost.jsx"
-import EditPost from "./pages/EditPost.jsx"
-import Post from './pages/Post.jsx'
-import Profile from "./pages/Profile.jsx";
+import { AuthLayout, Container } from "./components/index.js";
+import Loader from "./utils/Loader.jsx";
 
-
+const Home = lazy(() => import('./pages/Home.jsx'));
+const Login = lazy(() => import("./pages/Login.jsx"));
+const Signup = lazy(() => import("./pages/Signup.jsx"));
+const MyPosts = lazy(() => import("./pages/MyPosts.jsx"));
+const AddPost = lazy(() => import("./pages/AddPost.jsx"));
+const EditPost = lazy(() => import("./pages/EditPost.jsx"));
+const Post = lazy(() => import("./pages/Post.jsx"));
+const Profile = lazy(() => import("./pages/Profile.jsx"));
 
 
 const router = createBrowserRouter([
@@ -25,7 +25,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element:(
+          <Suspense >
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/login",
@@ -76,7 +80,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/post/:slug",
-        element: <Post />,
+        element: (
+          <Suspense >
+            <Post />
+          </Suspense>
+      ),
       },
     ],
   },

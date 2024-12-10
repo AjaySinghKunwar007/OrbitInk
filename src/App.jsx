@@ -38,16 +38,14 @@ function App() {
 
   return loading ? (
     <>
-      <div className=" h-screen w-full">
-      
-      </div>
+     
     </>
   ) : (
     <div className="flex flex-col min-h-screen bg-gray-900">
       <Header />
       
-     <main className="flex-grow">
-      <Outlet></Outlet>
+     <main className="flex-grow min-h-[100vh] w-[100%] px-4">
+      <Outlet ></Outlet>
      </main>
       <Footer />
       <ToastContainer position="top-right" autoClose={3000} />
